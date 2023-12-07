@@ -5,6 +5,8 @@
  */
 package main;
 
+import app.App;
+
 /**
  *
  * @author Daniel
@@ -15,6 +17,6 @@ public class LyraSoftware {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        App app = new App();
     }
 }
