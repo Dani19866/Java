@@ -1,53 +1,71 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package app;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import installer.Installer;
+import installer.InstallerUI;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import lyra.LyraGUI;
+import lyra.LyraUI;
 
-/**
- *
- * @author Daniel
- */
 public class App {
 
+    InstallerUI installer;
+    Installer auxInstaller;
+    LyraUI lyra;
+
     public App() {
-        this.updateWindowsAppareance();
-        this.initApp();
-    }
-
-    private void initApp() {
-        LyraGUI lyra = new LyraGUI();
-        this.configWindowApp(lyra);
-    }
-
-    private void configWindowApp(JFrame frame) {
-        // Aspecto
-        String windowNameApp = "Lyra Software by Daniel De Oliveira";
-
-        // Dimensiones
-        int fullScreenApp = JFrame.MAXIMIZED_BOTH;
-        int minWidthApp = 500;
-        int minHeightApp = 500;
-        Dimension size = new Dimension(minWidthApp, minHeightApp);
+        // Changing appareance
+        updateWindowsAppareance();
         
+        // Deciding what JFrame show
+        if (existComponents()) {
+            // Installer UI
+            initInstaller();
+            
+        }else{
+            // Init UI
+            initApp();
+            
+        }
+    }
+
+    // Init of UI Installer
+    private void initInstaller() {
+        installer = new InstallerUI();
+        installer.setTitle("Lyra Installer");
+        installer.setLocationRelativeTo(null);
+        installer.setResizable(false);
+        installer.setVisible(true);
+    }
+
+    // Init UI App
+    private void initApp() {
+        lyra = new LyraUI();
+        configWindowApp(lyra);
+    }
+
+    // Configs of UI App
+    private void configWindowApp(JFrame frame) {
+        // Configurations
+        String windowNameApp = "Lyra Software";
+
         // Set configurations
         frame.setTitle(windowNameApp);
         frame.setLocationRelativeTo(null);
-        frame.setExtendedState(fullScreenApp);
         frame.setResizable(false);
-        
+
         // Visibility
         frame.setVisible(true);
     }
 
+    // TO ACTIVE
+    private boolean existComponents() {
+        return true;
+        // auxInstaller = new Installer();
+        // return !auxInstaller.waitingServiceStatus();
+    }
+
+    // Ignore
     private void updateWindowsAppareance() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
