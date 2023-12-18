@@ -1,0 +1,24 @@
+Database details
+    1. Download and install mongoDB
+    2. Download and Install Mongosh
+    3. Configure Mongo users
+        Instruccions/config_users
+    4. Edit the config mongoDB file
+        security
+            authorization: enabled
+    5. Create databases
+        Instruccions/config_database
+
+Buttons details (Feature)
+    1. Create a button
+    2. Add in "initConfiguration" and "selecButtonController"
+    3. Create click event (ActionPerfor...)
+    4. Add function "selectButtonController"
+
+//    private void addLog(String log) {
+//        String text = lmessages.getText();
+//        log = "[" + Utils.getFullHour() + "]" + " " + log;
+//        
+//        if ("".equals(text)) lmessages.setText(log);
+//        else lmessages.setText( text + "\n" + log);
+//    }
